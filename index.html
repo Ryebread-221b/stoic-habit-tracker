@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stoic Habit Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <div>
+          <h1>STOIC HABIT TRACKER</h1>
+          <p>月間の習慣をチェックボックスで管理し、進捗を可視化する</p>
+        </div>
+        <div class="date-tools">
+          <label for="dateInput">対象日</label>
+          <input id="dateInput" type="date" />
+          <button id="loadDateBtn">読み込み</button>
+          <button id="todayBtn">今日</button>
+        </div>
+      </header>
+
+      <section class="habit-editor">
+        <h2>HABIT SETTINGS</h2>
+        <div class="habit-editor-form">
+          <input id="newHabitName" type="text" placeholder="新しい目標項目（例: 瞑想）" />
+          <input id="newHabitGoal" type="number" min="1" max="31" placeholder="目標回数" />
+          <button id="addHabitBtn">項目を追加</button>
+        </div>
+        <p id="habitEditorMessage" class="editor-message"></p>
+      </section>
+
+      <section class="share-panel">
+        <h2>SHARE</h2>
+        <div class="share-actions">
+          <button id="createShareBtn">共有コードを作成</button>
+          <button id="toggleFriendViewBtn">友達の進捗を見る</button>
+          <span id="viewModeBadge" class="view-mode-badge">SELF MODE</span>
+        </div>
+        <textarea id="shareCodeOutput" rows="2" readonly placeholder="ここに共有リンクが表示されます"></textarea>
+        <div class="share-import">
+          <input id="friendShareInput" type="text" placeholder="友達から受け取った共有リンク/共有コードを貼り付け" />
+          <button id="loadFriendShareBtn">友達コードを読み込む</button>
+        </div>
+        <p id="shareMessage" class="editor-message"></p>
+      </section>
+
+      <section class="layout">
+        <section class="sheet-panel">
+          <video class="sheet-video" autoplay muted loop playsinline>
+            <source src="./assets/sunset-sea.mp4" type="video/mp4" />
+          </video>
+          <div class="sheet-overlay"></div>
+          <div class="sheet-head">
+            <h2 id="monthTitle">MONTHLY TRACKER</h2>
+            <button id="quickAddHabitBtn" class="quick-add-btn">+ QUICK ADD</button>
+          </div>
+          <div class="sheet-wrap">
+            <table id="habitTable" class="habit-table"></table>
+          </div>
+        </section>
+
+        <div id="layoutResizer" class="layout-resizer" aria-label="右カラム幅調整" role="separator"></div>
+
+        <aside class="dashboard-panel">
+          <section class="card">
+            <h3>OVERVIEW MONTHLY PROGRESS</h3>
+            <div class="donut-wrap">
+              <svg id="monthlyDonut" viewBox="0 0 220 220" aria-label="月間進捗"></svg>
+              <div class="donut-meta">
+                <p id="monthlyPercent">0%</p>
+                <p id="monthlyCount">0 / 0</p>
+                <div class="donut-tags">
+                  <span class="donut-tag"><span class="dot dot-complete"></span>Completed</span>
+                  <span class="donut-tag"><span class="dot dot-left"></span>Left</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card">
+            <h3>TOP DAILY HABITS</h3>
+            <ol id="topHabits" class="top-list"></ol>
+          </section>
+
+          <section class="card">
+            <h3>DAILY COMPLETION (MONTH)</h3>
+            <div id="dailyBars" class="bars"></div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script src="webapp.js"></script>
+  </body>
+</html>

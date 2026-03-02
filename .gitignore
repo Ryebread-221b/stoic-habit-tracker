@@ -1,0 +1,5 @@
+.pycache/
+*.pyc
+.DS_Store
+
+assets/*.mp4
